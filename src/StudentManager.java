@@ -10,6 +10,10 @@ public class StudentManager {
 
     private StudentManager(){this.stuList = new ArrayList<>(); this.scanner = new Scanner(System.in);}
 
+    /**
+     * 获取manager的单例对象
+     * @return 学生管理器实例
+     */
     public static StudentManager getInstance(){
         if (INSTANCE==null){
             synchronized (StudentManager.class){
@@ -21,6 +25,11 @@ public class StudentManager {
         return INSTANCE;
     }
 
+    /**
+     * APP的启动方法
+     * @throws ParseException 解析异常
+     * @throws IOException IO异常
+     */
     public void APP() throws ParseException, IOException {
         printBanner();
         while (scanner.hasNextInt()){
@@ -69,6 +78,9 @@ public class StudentManager {
         }
     }
 
+    /**
+     * 打印控制信息，封装以备多次使用
+     */
     private void printBanner(){
         System.out.println("***********************************\n" +
                 "*                           1  插入                                  *\n" +
@@ -85,6 +97,9 @@ public class StudentManager {
      * @return all students
      */
     private List<Student> queryStudents(){
+        if (stuList == null || stuList.size()==0){
+            throw new RuntimeException("there is no student in studentsList");
+        }
         return stuList;
     }
 

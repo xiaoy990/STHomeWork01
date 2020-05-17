@@ -1,5 +1,3 @@
-import java.text.ParseException;
-
 public class SMTest {
     public static void main(String[] args) {
         StudentManager instance = StudentManager.getInstance();
